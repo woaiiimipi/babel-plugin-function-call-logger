@@ -1,0 +1,1 @@
+module.exports = require('./plugins/babel-plugin-function-call-logger/index')

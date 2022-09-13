@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./popup.css">
+  </head>
+  <body>
+    <div class="container">
+      <div class="language-box">
+        <div class="language-list">
+          <a class="language btn">English</a>
+          <span>|</span>
+          <a class="language btn active">简体中文</a></a>
+        </div>
+      </div>
+      <div>
+        <h3 class="function-type-title">需要打印日志的函数类型:</h3>
+        <div class="btn-group">
+          <button class="theme-btn" id="selectAll">全选</button>
+          <button class="theme-btn" id="clear">清空</button>
+        </div>
+        <form id="form">
+          <!-- <div>
+            <div class="form-item">
+              <input type="checkbox" id="html">
+              <label for="html">HTML</label>
+            </div>
+            <div class="form-item">
+              <input type="checkbox" id="css">
+              <label for="css">CSS</label>
+            </div>
+          </div> -->
+        </form>
+      </div>
+      <div class="footer">
+        <div id="tip"></div>
+      </div>
+    </div>
+    
+    <script src="./js/popup.js"></script>
+  </body>
+</html>

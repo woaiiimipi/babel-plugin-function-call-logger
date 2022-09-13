@@ -1,0 +1,32 @@
+{
+  "author": "BoolXiao",
+  "description": "This extension is made for babel-plugin-function-call-logger to change config in runtime.",
+  "icons": {
+    "48": "icons/tool.png",
+    "96": "icons/tool.png"
+  },
+  "manifest_version": 3,
+  "name": "babel-plugin-function-call-logger-helper",
+  "version": "1.0",
+  "permissions": ["tabs", "background"],
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "js": ["js/content.js"],
+      "matches": ["*://*/*"]
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": ["js/pre-inject.js", "js/inject.js", "js/inject-config-change-code/generate.js"],
+      "matches": ["<all_urls>"]
+    },
+    {
+      "resources": ["js/pre-inject.js"],
+      "matches": ["<all_urls>"],
+      "when": "docuemnt"
+    }
+  ]
+}
