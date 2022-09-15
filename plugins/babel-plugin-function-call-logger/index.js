@@ -19,28 +19,17 @@ module.exports = ({ types: t }) => {
       // 箭头函数体
       ArrowFunctionExpression(path, state) {
         const fnName = utils.safeGet(path, "parentPath.node.id.name");
+        // class method name / jsx property name
         const methodName = utils.safeGet(path, "parentPath.node.key.name");
-        // const jsxPropertyName = (() => {
-        //   if (utils.isArrowJsxProperty) {
-
-        //   }
-        // })()
-        const isClassMethod = utils.isArrowClassMethod(path);
+        const jsxProptyName = utils.safeGet(path, "parentPath.parentPath.node.name.name");
         const hasBody = t.isBlockStatement(path.node.body);
         // 具名
-        if (fnName || methodName) {
+        const name = fnName || methodName || jsxProptyName
+        if (name) {
           if (hasBody) {
-            if (isClassMethod) {
-              handler.arrowClassMethodWithBody(path, state, methodName);
-            } else {
-              handler.arrowNamedWithBody(path, state, fnName || methodName);
-            }
+            handler.arrowNamedWithBody(path, state, name);
           } else {
-            if (isClassMethod) {
-              handler.arrowClassMethodWithoutBody(path, state, methodName);
-            } else {
-              handler.arrowNamedWithoutBody(path, state, fnName || methodName);
-            }
+            handler.arrowNamedWithoutBody(path, state, name);
           }
           // 匿名
         } else {

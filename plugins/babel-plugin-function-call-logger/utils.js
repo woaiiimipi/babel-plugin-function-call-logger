@@ -12,9 +12,6 @@ function safeGet(obj, propertyPath = "") {
 function isArrowClassMethod(path) {
   return t.isClassProperty(path.parentPath.node)
 }
-function isArrowJsxProperty(path) {
-  return t.isJSXExpressionContainer(path.parentPath.node)
-}
 function hasBody(t, path) {
   return t.isBlockStatement(path.node.body);
 }

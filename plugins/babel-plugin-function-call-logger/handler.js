@@ -37,7 +37,9 @@ const EnabledFuntionType = __EnabledFuntionTypeList.reduce((acc, item) => {
 
 const checkIfHandled = (node) => {
   // inject global config in runtime
-  return safeGet(node, "body.body.0.test.name") === `'${UN_INJECTED_LOG_MARK}'` || safeGet(node, "body.body.0.test.name") === `'${MARK}'`;
+  return safeGet(node, "body.body.0.test.name") === `'${UN_INJECTED_LOG_MARK}'`
+      || safeGet(node, "body.body.0.test.name") === `'${MARK}'`
+      || safeGet(node, "body.body.0.expression.left.callee.object.name") === GLOBAL_CONFIG_MARK
 };
 const parseInsertAst = (fnName, enabledTypeList) => {
   const consoleAst = t.expressionStatement(
